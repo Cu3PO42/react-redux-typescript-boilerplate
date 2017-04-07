@@ -4,7 +4,7 @@
       "targets": {
         "browsers": ["chrome >= 57"]
       },
-      "exclude": ["transform-es2015-modules-commonjs"]
+      "modules": false
     }],
     "stage-3",
     "react"
