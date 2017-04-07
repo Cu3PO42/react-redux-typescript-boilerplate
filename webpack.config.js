@@ -23,9 +23,10 @@ const jsLoaders = (other) => [{
 
 module.exports = {
   // Allow TypeScript files to be treated as normal JS
-  resolve: [
+  resolve: {
+    extensions: [
     '.js', '.jsx', '.ts', '.tsx'
-  ],
+  ]},
 
   // Enable source maps
   devtool: process.env.NODE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map',
