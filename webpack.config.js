@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const cssLoaders = (other) => ExtractTextPlugin.extract({
   use: [{
@@ -32,6 +33,15 @@ module.exports = {
   // Enable source maps
   devtool: process.env.NODE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map',
 
+  entry: [
+    './src/index.tsx'
+  ],
+
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+
   module: {
     rules: [{
       test: /\.css$/,
@@ -47,7 +57,7 @@ module.exports = {
     }, {
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      use: jsLoaders()
+      use: jsLoaders([])
     }, {
       test: /\.tsx?$/,
       exclude: /node_modules/,

@@ -3,7 +3,8 @@
     ["env", {
       "targets": {
         "browsers": ["chrome >= 57"]
-      }
+      },
+      "exclude": ["transform-es2015-modules-commonjs"]
     }],
     "stage-3",
     "react"
