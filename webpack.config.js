@@ -34,6 +34,7 @@ module.exports = {
   devtool: process.env.NODE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map',
 
   entry: [
+    // Main entrypoint
     './src/index.tsx'
   ],
 
@@ -76,5 +77,12 @@ module.exports = {
       template: 'src/index.ejs',
       inject: 'body'
     })
-  ]
+  ],
+  devServer: {
+    port: 5678,
+    // Path to serve static files from
+    contentBase: path.resolve(__dirname, 'dist'),
+    // Serve index.html instead of 404
+    historyApiFallback: true
+  }
 };
