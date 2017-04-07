@@ -17,7 +17,19 @@ const cssLoaders = (other) => ExtractTextPlugin.extract({
   fallback: 'style-loader'
 });
 
+const jsLoaders = (other) => [{
+  loader: 'babel-loader'
+}, ...other];
+
 module.exports = {
+  // Allow TypeScript files to be treated as normal JS
+  resolve: [
+    '.js', '.jsx', '.ts', '.tsx'
+  ],
+
+  // Enable source maps
+  devtool: process.env.NODE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map',
+
   module: {
     rules: [{
       test: /\.css$/,
@@ -29,6 +41,16 @@ module.exports = {
         options: {
           sourceMap: true
         }
+      }])
+    }, {
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: jsLoaders()
+    }, {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: jsLoaders([{
+        loader: 'ts-loader'
       }])
     }]
   },
