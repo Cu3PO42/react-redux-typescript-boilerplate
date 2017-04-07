@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const cssLoaders = (other) => ExtractTextPlugin.extract({
   use: [{
@@ -58,7 +59,12 @@ module.exports = {
   plugins: [
     // Actually output extracted CSS
     new ExtractTextPlugin({
-      filename: 'build/main.css'
+      filename: 'dist/main.css'
+    }),
+    // Generate an HTML-file to include all bundle outputs
+    new HtmlWebpackPlugin({
+      template: 'src/index.ejs',
+      inject: 'body'
     })
   ]
 };
