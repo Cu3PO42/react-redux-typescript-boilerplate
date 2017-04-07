@@ -1,4 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import App from './components/App/App'
 
-render(<h1>Hello World!!</h1>, document.getElementById('root'));
+render(<AppContainer><App /></AppContainer>, document.getElementById('root'));
+
+if (module.hot) {
+  module.hot.accept('./components/App/App', () => {
+    const NApp = require('./components/App/App').default;
+    render(<AppContainer><NApp /></AppContainer>, document.getElementById('root'));
+  });
+}

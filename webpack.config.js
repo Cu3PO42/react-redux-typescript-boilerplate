@@ -1,6 +1,9 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
+
+const IS_PROD = process.env.NODE_ENV === 'PRODUCTION';
 
 const cssLoaders = (other) => ExtractTextPlugin.extract({
   use: [{
@@ -31,16 +34,20 @@ module.exports = {
   ]},
 
   // Enable source maps
-  devtool: process.env.NODE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map',
+  devtool: IS_PROD ? 'source-map' : 'inline-source-map',
 
   entry: [
+    // HMR for React
+    'react-hot-loader/patch',
+
     // Main entrypoint
     './src/index.tsx'
   ],
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
 
   module: {
@@ -67,22 +74,30 @@ module.exports = {
       }])
     }]
   },
-  plugins: [
+  plugins: [...[
     // Actually output extracted CSS
     new ExtractTextPlugin({
-      filename: 'dist/main.css'
+      filename: 'dist/main.css',
+      disable: !IS_PROD
     }),
     // Generate an HTML-file to include all bundle outputs
     new HtmlWebpackPlugin({
       template: 'src/index.ejs',
       inject: 'body'
     })
-  ],
+  ], ...(IS_PROD ? [] : [
+    // Enable HMR
+    new webpack.HotModuleReplacementPlugin(),
+    // More readable module names in HMR
+    new webpack.NamedModulesPlugin()
+  ])],
+
   devServer: {
     port: 5678,
-    // Path to serve static files from
-    contentBase: path.resolve(__dirname, 'dist'),
     // Serve index.html instead of 404
-    historyApiFallback: true
+    historyApiFallback: true,
+    // Enable Hot Module Reloading
+    hotOnly: true,
+    publicPath: '/'
   }
 };

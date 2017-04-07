@@ -3,7 +3,6 @@ declare module '*.css' {
   export default names;
 }
 
-
 declare module '*.scss' {
   const names: {[name: string]: string};
   export default names;
