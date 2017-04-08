@@ -9,5 +9,9 @@ const composeEnhancers: typeof compose =
 const enhancer = composeEnhancers(applyMiddleware(ReduxThunk), applyMiddleware(ReduxPromise));
 
 export default function configureStore() {
-  return createStore(rootReducer, {}, enhancer);
+  const store = createStore(rootReducer, {}, enhancer);
+  if (module.hot) {
+    module.hot.accept('./reducers', () => store.replaceReducer(require('./reducers').default));
+  }
+  return store;
 }
