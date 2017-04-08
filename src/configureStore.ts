@@ -3,7 +3,10 @@ import ReduxThunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
 import rootReducer from './reducers';
 
-const enhancer = compose(applyMiddleware(ReduxThunk), applyMiddleware(ReduxPromise));
+const devtoolsCompose = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers: typeof compose =
+  process.env.NODE_ENV !== 'production' && devtoolsCompose || compose;
+const enhancer = composeEnhancers(applyMiddleware(ReduxThunk), applyMiddleware(ReduxPromise));
 
 export default function configureStore() {
   return createStore(rootReducer, {}, enhancer);

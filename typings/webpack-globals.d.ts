@@ -5,3 +5,9 @@ interface WebpackModule {
 }
 
 declare var module: WebpackModule;
+
+interface ProcessGlobal {
+  env: { [name: string]: string }
+}
+
+declare var process: ProcessGlobal;
