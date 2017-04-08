@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles.scss';
 
 interface CounterProps {
   count: number;
@@ -7,7 +8,7 @@ interface CounterProps {
 }
 
 const Counter = ({ count, increment, decrement }: CounterProps) => (
-  <div>
+  <div className={styles.wrapper}>
     <div>{count}</div>
     <div>
       <button onClick={increment}>+</button>
