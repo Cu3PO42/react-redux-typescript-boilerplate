@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "command": "npm",
+  "isShellCommand": true,
+  "showOutput": "always",
+  "suppressTaskName": true,
+  "tasks": [{
+    "taskName": "test",
+    "args": ["run", "test"]
+  }, {
+    "taskName": "build-dev",
+    "args": ["run", "build"]
+  }, {
+    "taskName": "dev-server",
+    "args": ["run", "dev-server"]
+  }]
+}
