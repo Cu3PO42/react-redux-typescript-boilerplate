@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && webpack --progress",
-    "dev-server": "npm run clean && webpack-dev-server --open --progress"
+    "dev-server": "webpack-dev-server --progress"
   },
   "author": "Cu3PO42",
   "license": "MIT",
