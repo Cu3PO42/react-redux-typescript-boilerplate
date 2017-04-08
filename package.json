@@ -36,8 +36,15 @@
     "@types/react": "^15.0.21",
     "@types/react-dom": "^0.14.23",
     "@types/react-hot-loader": "^3.0.1",
+    "@types/react-redux": "^4.4.38",
+    "@types/redux": "^3.6.0",
+    "@types/redux-promise": "^0.5.24",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0"
   }
 }

@@ -1,13 +1,27 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
-import App from './components/App/App'
+import configureStore from './configureStore';
+import App from './components/App/App';
 
-render(<AppContainer><App /></AppContainer>, document.getElementById('root'));
+const store = configureStore();
+
+// tslint:disable-next-line:variable-name
+function renderMain(App: React.ReactType) {
+  return (
+    <AppContainer>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AppContainer>
+  );
+}
+
+render(renderMain(App), document.getElementById('root'));
 
 if (module.hot) {
   module.hot.accept('./components/App/App', () => {
-    const NApp = require('./components/App/App').default;
-    render(<AppContainer><NApp /></AppContainer>, document.getElementById('root'));
+    render(renderMain(require('./components/App/App').default), document.getElementById('root'));
   });
 }
