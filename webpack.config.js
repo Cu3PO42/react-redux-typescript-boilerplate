@@ -72,6 +72,11 @@ module.exports = {
       use: jsLoaders([{
         loader: 'ts-loader'
       }])
+    }, {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: 'tslint-loader',
+      enforce: 'pre'
     }]
   },
   plugins: [...[
