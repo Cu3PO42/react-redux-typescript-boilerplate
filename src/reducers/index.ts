@@ -1,3 +1,10 @@
 import { combineReducers } from 'redux';
+import counter, { CounterStore } from './counter';
 
-export default combineReducers({});
+export interface Store {
+  counter: CounterStore;
+}
+
+export default combineReducers({
+  counter,
+});

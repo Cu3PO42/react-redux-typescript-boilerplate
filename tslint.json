@@ -5,7 +5,9 @@
     ],
     "jsRules": {},
     "rules": {
-      "import-name": false
+      "import-name": false,
+      "max-line-length": [true, 120],
+      "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
     },
     "rulesDirectory": []
 }
