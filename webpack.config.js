@@ -12,6 +12,7 @@ const cssLoaders = (other) => ExtractTextPlugin.extract({
       sourceMap: true,
       // Enable CSS Modules to scope class names
       modules: true,
+      minimize: IS_PROD,
       importLoaders: 1 + other.length
     }
   }, {
