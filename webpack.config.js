@@ -3,7 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
-const IS_PROD = process.env.NODE_ENV === 'PRODUCTION';
+const { NODE_ENV } = process.env;
+if (NODE_ENV !== 'production' && NODE_ENV !== 'development') {
+  throw new Error('Must set NODE_ENV to either production or development.');
+}
+
+const IS_PROD = NODE_ENV === 'production';
 
 const cssLoaders = (other) => ExtractTextPlugin.extract({
   use: [{
@@ -101,6 +106,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.ejs',
       inject: 'body'
+    }),
+    // Inject proper value for NODE_ENV into build
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
     })
   ], ...(IS_PROD ? [] : [
     // Enable HMR
