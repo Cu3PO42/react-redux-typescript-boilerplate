@@ -15,13 +15,12 @@
     },
     "test": {
       "presets": [
-        "jest", [
-          "env", {
+        ["env", {
             "targets": {
               "node": "current"
             }
-          }
-        ]
+        }],
+        "jest"
       ]
     }
   }

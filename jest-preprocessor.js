@@ -12,7 +12,7 @@ module.exports = {
     }
 
     if (isTs || isJs) {
-      src = babel.transform(src).code;
+      src = babel.transform(src, { extends: './.babelrc' }).code;
     }
 
     return src;
