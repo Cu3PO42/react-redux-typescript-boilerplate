@@ -12,6 +12,17 @@
   "env": {
     "development": {
       "plugins": ["react-hot-loader/babel"]
+    },
+    "test": {
+      "presets": [
+        "jest", [
+          "env", {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
     }
   }
 }

@@ -1,0 +1,7 @@
+{
+  "moduleFileExtensions": ["js", "jsx", "json", "ts", "tsx"],
+  "transform": {
+    "\\.[jt]sx?$": "<rootDir>/jest-preprocessor.js"
+  },
+  "testMatch": ["**/__tests__/**/*.(j|t)s?(x)", "**/?(*.)(spec|test).(j|t)s?(x)"]
+}
