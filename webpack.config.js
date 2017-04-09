@@ -100,7 +100,7 @@ module.exports = {
   plugins: [...[
     // Actually output extracted CSS
     new ExtractTextPlugin({
-      filename: 'dist/main.css',
+      filename: 'main.css',
       disable: !IS_PROD
     }),
     // Generate an HTML-file to include all bundle outputs
