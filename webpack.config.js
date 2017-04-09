@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -111,7 +112,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
     })
-  ], ...(IS_PROD ? [] : [
+  ], ...(IS_PROD ? [
+    // Minify JS
+    new BabiliPlugin()
+  ] : [
     // Enable HMR
     new webpack.HotModuleReplacementPlugin(),
     // More readable module names in HMR
