@@ -76,7 +76,18 @@ module.exports = {
       test: /\.tsx?$/,
       exclude: /node_modules/,
       use: 'tslint-loader',
+      // Force TSLint before other loaders
       enforce: 'pre'
+    }, {
+      test: /\.(woff2?|png|tiff?|jpe?g)$/,
+      use: [{
+        // Include files as data urls
+        loader: 'url-loader',
+        options: {
+          // Only embed small files
+          limit: 10000
+        }
+      }]
     }]
   },
   plugins: [...[
