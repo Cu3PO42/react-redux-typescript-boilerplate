@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
+import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from './configureStore';
 import App from './components/App';
 
@@ -12,7 +13,9 @@ function renderMain(App: React.ReactType) {
   return (
     <AppContainer>
       <Provider store={store}>
-        <App />
+        <Router>
+          <App />
+        </Router>
       </Provider>
     </AppContainer>
   );

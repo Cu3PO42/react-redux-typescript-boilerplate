@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import counter, { CounterStore } from './counter';
+import joke, { JokeState } from './joke';
 
-export interface Store {
-  counter: CounterStore;
+export interface State {
+  joke: JokeState;
 }
 
 export default combineReducers({
-  counter,
+  joke,
 });
