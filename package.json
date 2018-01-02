@@ -18,6 +18,7 @@
     "@types/jest": "^22.0.0",
     "@types/react-addons-test-utils": "^0.14.20",
     "@types/react-test-renderer": "^16.0.0",
+    "@types/webpack-env": "^1.13.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
