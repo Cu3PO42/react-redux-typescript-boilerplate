@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "react-redux-typesript-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,6 +13,13 @@
   },
   "author": "Cu3PO42",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cu3PO42/react-redux-typescript-boilerplate/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cu3PO42/react-redux-typescript-boilerplate.git"
+  },
   "devDependencies": {
     "@types/enzyme": "^3.1.6",
     "@types/jest": "^22.0.0",
