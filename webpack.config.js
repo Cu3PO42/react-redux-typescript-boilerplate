@@ -82,7 +82,7 @@ module.exports = {
     }, {
       test: /\.tsx?$/,
       exclude: /node_modules/,
-      use: 'tslint-loader',
+      loader: 'tslint-loader',
       // Force TSLint before other loaders
       enforce: 'pre'
     }, {
