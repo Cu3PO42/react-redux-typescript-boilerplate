@@ -1,6 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BabiliPlugin = require('babili-webpack-plugin');
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -114,7 +114,13 @@ module.exports = {
     })
   ], ...(IS_PROD ? [
     // Minify JS
-    new BabiliPlugin()
+    new UglifyWebpackPlugin({
+      sourceMap: true,
+      uglifyOptions: {
+        ecma: 8,
+        safari10: true
+      }
+    })
   ] : [
     // Enable HMR
     new webpack.HotModuleReplacementPlugin(),
